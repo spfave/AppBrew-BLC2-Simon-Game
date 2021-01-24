@@ -1,10 +1,18 @@
+let gameStart = false;
+let level = 0;
 let buttonColors = ["red", "blue", "green", "yellow"];
 let gamePattern = [];
 let userPattern = [];
 
 
 // Functions
+function updateLevel() {
+    level++;
+    $("#level-title").text(`Level ${level}`);
+}
+
 function nextSequence() {
+    updateLevel();
     let randomNumber = Math.floor(Math.random() * 4);
     let randomChosenColor = buttonColors[randomNumber];
     gamePattern.push(randomChosenColor);
@@ -51,9 +59,16 @@ $(".btn").click(function () {
     // console.log(userPattern);
 })
 
-let nextButton = nextSequence();
 
+$("body").keypress(function () {
+    if (!gameStart) {
+        gameStart = true;
+        nextSequence();
 
+    }
 
+})
+
+// let nextButton = nextSequence();
 // console.log(getButton(nextButton));
 // console.log(nextButton);
