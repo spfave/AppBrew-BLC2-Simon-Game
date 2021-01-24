@@ -1,13 +1,9 @@
 let buttonColors = ["red", "blue", "green", "yellow"];
 let gamePattern = [];
+let userPattern = [];
 
 
 // Functions
-// function nextSequence(params) {
-//     let randomNumber = Math.floor(Math.random() * 4);
-//     return randomNumber;
-// }
-
 function nextSequence() {
     let randomNumber = Math.floor(Math.random() * 4);
     let randomChosenColor = buttonColors[randomNumber];
@@ -16,7 +12,6 @@ function nextSequence() {
 
 function getButton(color) {
     return $(`#${color}`);
-
 }
 
 function animateButton(color) {
@@ -28,7 +23,6 @@ function flashButton(color) {
     let button = getButton(color);
     button.fadeOut(125);
     button.fadeIn(125);
-
 }
 
 function playButtonSound(color) {
@@ -36,8 +30,17 @@ function playButtonSound(color) {
     buttonSound.play();
 }
 
+function clickedButton(button) {
+    userPattern.push(button.id);
+    console.log(userPattern);
+}
+
 
 // Main
+$("div .btn").click(function () {
+    clickedButton(this);
+})
+
 let nextButton = nextSequence();
 animateButton(nextButton);
 
