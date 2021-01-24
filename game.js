@@ -14,7 +14,22 @@ function nextSequence() {
     return randomChosenColor;
 }
 
+function getButton(color) {
+    return $(`#${color}`);
+
+}
+
+function flashButton(color) {
+    let button = getButton(color);
+    button.fadeOut(125);
+    button.fadeIn(125);
+
+}
 
 
 // Main
 let nextButton = nextSequence();
+flashButton(nextButton);
+
+// console.log(getButton(nextButton));
+// console.log(nextButton);
