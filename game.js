@@ -19,6 +19,11 @@ function getButton(color) {
 
 }
 
+function animateButton(color) {
+    flashButton(color);
+    playButtonSound(color);
+}
+
 function flashButton(color) {
     let button = getButton(color);
     button.fadeOut(125);
@@ -26,10 +31,15 @@ function flashButton(color) {
 
 }
 
+function playButtonSound(color) {
+    let buttonSound = new Audio(`sounds/${color}.mp3`);
+    buttonSound.play();
+}
+
 
 // Main
 let nextButton = nextSequence();
-flashButton(nextButton);
+animateButton(nextButton);
 
 // console.log(getButton(nextButton));
 // console.log(nextButton);
