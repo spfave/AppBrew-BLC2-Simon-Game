@@ -18,8 +18,6 @@ function nextGameSequence() {
     let randomChosenColor = buttonColors[randomNumber];
     gamePattern.push(randomChosenColor);
     animateGameButton(randomChosenColor);
-
-    // console.log(gamePattern);
 }
 
 function checkUserPattern() {
@@ -49,10 +47,6 @@ function startOver() {
     level = 0;
 }
 
-function getButton(color) {
-    return $(`#${color}`);
-}
-
 function animateGameButton(color) {
     flashButton(color);
     playButtonSound(color);
@@ -64,12 +58,12 @@ function animateUserButton(color) {
 }
 
 function flashButton(color) {
-    let button = getButton(color);
+    let button = $(`#${color}`);
     button.fadeOut(125).fadeIn(125);
 }
 
 function shadowButton(color) {
-    let button = getButton(color);
+    let button = $(`#${color}`);
     button.addClass("pressed");
     setTimeout(function () { button.removeClass("pressed"); }, 125)
 }
@@ -80,16 +74,13 @@ function playButtonSound(color) {
 }
 
 
-// Main
+// Document
 $(".btn").click(function () {
     let userSelectedColor = this.id;
     animateUserButton(userSelectedColor);
     userPattern.push(userSelectedColor);
-    // console.log(userPattern);
-
     checkUserPattern();
 })
-
 
 $("body").keypress(function () {
     if (!gameStart) {
@@ -97,9 +88,4 @@ $("body").keypress(function () {
         nextGameSequence();
 
     }
-
 })
-
-// let nextButton = nextSequence();
-// console.log(getButton(nextButton));
-// console.log(nextButton);
